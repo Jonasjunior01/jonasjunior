@@ -1,12 +1,11 @@
-from django.shortcuts import render
-from.models import Aluno
+from .models import Aluno
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def alunoView(request):
-
-    aluno_list = Aluno.objects.all()
-    aluno_str = '\n'.join([str(aluno) for aluno in aluno_list])
-    return HttpResponse(aluno_str)
+    
+    alunos_list = Aluno.objects.all()
+    return render(request, 'main/alunos.html', {'alunos_list': alunos_list})
 
 
 # Create your views here.
